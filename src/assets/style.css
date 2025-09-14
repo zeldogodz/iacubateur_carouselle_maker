@@ -1,0 +1,58 @@
+/* Global */
+:root{
+  --bg:#0a0f12;
+  --card:#11161c;
+  --muted:#7a8599;
+  --blue:#0d6efd;
+  --blue2:#1a7dff;
+  --white:#ffffff;
+}
+html, body, .stApp { background: radial-gradient(1000px 600px at 80% -200px, #0d1420, var(--bg)) fixed; }
+.stApp { color: var(--white); }
+
+/* Header hero */
+.hero {
+  padding: 26px 22px 10px;
+  background: linear-gradient(135deg, #0c1220 0%, #0b0f1a 70%);
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.06);
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+.hero h1 { margin: 0; font-size: 34px; letter-spacing: .5px; }
+.hero p  { margin: 4px 0 0; color: var(--muted); }
+
+/* Cards / sections */
+.block {
+  padding: 18px;
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+}
+
+/* Inputs tweaks */
+section[data-testid="stSidebar"] .block, .block .stTextInput, .block .stTextArea { color: var(--white); }
+.stTextInput > div > div > input, .stTextArea textarea {
+  background: #0d131a !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(255,255,255,.08) !important;
+}
+
+/* Buttons */
+.stButton>button {
+  background: linear-gradient(135deg, var(--blue), var(--blue2));
+  color:#fff; border:none; padding:10px 16px; border-radius:12px;
+  box-shadow: 0 8px 18px rgba(26,125,255,.25); font-weight:600;
+}
+.stButton>button:hover { filter: brightness(1.06); }
+
+/* Download buttons */
+[data-testid="stDownloadButton"]>button{
+  background: #0f1520; border:1px solid rgba(255,255,255,.08);
+  color:#e9eefb; border-radius:12px; padding:10px 16px;
+}
+[data-testid="stDownloadButton"]>button:hover{ border-color: var(--blue2); color:#fff; }
+
+/* Image preview */
+.preview img { border-radius: 14px; border:1px solid rgba(255,255,255,.08); }
+.caption { color: var(--muted); font-size: 12px; text-align:center; margin-top:6px; }

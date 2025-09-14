@@ -81,10 +81,9 @@ def draw_slide(
 ):
     img = make_background(bg_style, canvas_w, canvas_h)
     # Vérification du type et du mode de l'image
-    if not isinstance(img, Image.Image):
-        raise TypeError("make_background doit retourner une image PIL.Image.Image")
-    if img.mode not in ("RGBA", "RGB"):
-        img = img.convert("RGBA")
+    if img is None:
+        # fallback si jamais un style inattendu arrive
+        img = make_background("Neon grid", W, H)
 
     draw = ImageDraw.Draw(img)
     MARGIN = int(min(canvas_w, canvas_h) * 0.08)
@@ -137,9 +136,10 @@ with tabs[0]:
         preset_name = st.selectbox("Format", list(WHS_PRESETS.keys()))
         W, H = WHS_PRESETS[preset_name]
         bg_style = st.selectbox("Background style", [
-            "Neon grid", "Blue gradient", "Abstract circles",
-            "Diagonal stripes", "Noise texture", "Radial glow", "Mesh gradient"
+            "Neon grid","Blue gradient","Abstract circles",
+            "Diagonal stripes","Noise texture","Radial glow","Mesh gradient"
         ])
+
         slide_texts = st.text_area(
             "Slides (un paragraphe = un slide)",
             height=220,
