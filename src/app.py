@@ -80,6 +80,11 @@ def draw_slide(
     top_title_mode=False
 ):
     img = make_background(bg_style, canvas_w, canvas_h)
+    # Vérification du type et du mode de l'image
+    if not isinstance(img, Image.Image):
+        raise TypeError("make_background doit retourner une image PIL.Image.Image")
+    if img.mode not in ("RGBA", "RGB"):
+        img = img.convert("RGBA")
 
     draw = ImageDraw.Draw(img)
     MARGIN = int(min(canvas_w, canvas_h) * 0.08)
